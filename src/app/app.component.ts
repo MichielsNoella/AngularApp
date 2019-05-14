@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {City} from './shared/model/city.model';
 
 @Component({
   selector: 'app-root',
@@ -25,13 +26,25 @@ import {Component, OnInit} from '@angular/core';
 // best use
 export class AppComponent implements OnInit {
   title: string;
+  citiesOfNetherland: string;
   name: string;
+  cities: City[];
+
+  // cities: string[];
 
   constructor() {
+    this.cities = [
+      new City(1, 'Groningen', 'GR'),
+      new City(2, 'Hengelo', 'OV'),
+      new City(3, 'De, Haag', 'ZH'),
+      new City(4, 'Enschede', 'OV')
+    ];
   }
 
   ngOnInit() {
     this.title = 'First Angular-app';
     this.name = 'Noella';
+    this.citiesOfNetherland = 'Nederland';
+    // this.cities = ['Groningen', 'Hengelo', 'Den Haag', 'Enschede'];
   }
 }
