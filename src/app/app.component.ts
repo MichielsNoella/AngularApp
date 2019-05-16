@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {City} from './shared/model/city.model';
+import {Address} from './shared/model/address.model';
 
 @Component({
   selector: 'app-root',
@@ -47,6 +48,7 @@ export class AppComponent implements OnInit {
   citiesOfNetherland: string;
   name: string;
   cities: City[];
+  address: Address[];
   showCities: boolean;
 
   // cities: string[];
@@ -57,6 +59,10 @@ export class AppComponent implements OnInit {
       new City(2, 'Hengelo', 'OV'),
       new City(3, 'De, Haag', 'ZH'),
       new City(4, 'Enschede', 'OV')
+    ];
+
+    this.address = [
+      new Address('Kaalheide', '41A', 3040, 'Huldenberg', 'België')
     ];
   }
 

@@ -5,10 +5,19 @@
   <h2 class="text-success">Welkom {{name}}</h2>
   <br>
   <h3 class="text-capitalize">{{citiesOfNetherland}}</h3>
-  <ul class="list-group" *ngIf="showCities">
+  <ul class="list-group">
     <li class="list-group-item" *ngFor="let city of cities">
 <!--      {{city}}-->
       {{city.id}} - {{city.name}} {{city.province}}
+    </li>
+  </ul>
+  <br>
+
+  <h3 class="text-capitalize">Address</h3>
+  <ul class="list-group" *ngIf="showCities">
+    <li class="list-group-item" *ngFor="let address of address">
+      <!--      {{city}}-->
+      {{address.street}} {{address.houseNumber}} - {{address.zipCode}} {{address.city}} - {{address.country}}
     </li>
   </ul>
 <!--  <app-customer></app-customer>-->
