@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {City} from './shared/model/city.model';
-import {Address} from './shared/model/address.model';
+import {Contact} from './shared/model/contact.model';
 
 @Component({
   selector: 'app-root',
@@ -48,9 +48,11 @@ export class AppComponent implements OnInit {
   citiesOfNetherland: string;
   name: string;
   cities: City[];
-  address: Address[];
-  showCities: boolean;
-
+  contacts: Contact[];
+  contactMsg: string = 'You can contact';
+  showContactAddress: boolean;
+  newCity: string;
+  // showCities: boolean;
   // cities: string[];
 
   constructor() {
@@ -61,8 +63,8 @@ export class AppComponent implements OnInit {
       new City(4, 'Enschede', 'OV')
     ];
 
-    this.address = [
-      new Address('Kaalheide', '41A', 3040, 'Huldenberg', 'België')
+    this.contacts = [
+      new Contact('Noella', 'Michiels', 'Kaalheide', '41A', 3040, 'Huldenberg', 'België')
     ];
   }
 
@@ -73,6 +75,22 @@ export class AppComponent implements OnInit {
     // this.cities = ['Groningen', 'Hengelo', 'Den Haag', 'Enschede'];
     // boolean evalueren en resultaat laten meetellen
     // om de lijst in app.component.html wel- of niet te tonen.
-    this.showCities = this.cities.length > 3;
+    // this.showCities = this.cities.length > 3;
+  }
+
+  toggleContactInformation() {
+    this.showContactAddress = !this.showContactAddress;
+    // this.showContactAddress ? 'You can contact' :;
+
+  }
+
+  showCity(city: City) {
+    alert('Uw favoriete stad is : ' + city.name);
+  }
+
+
+  changeCity(value: string) {
+    alert(value);
+    this.newCity = value;
   }
 }
