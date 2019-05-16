@@ -7,6 +7,24 @@ import {City} from './shared/model/city.model';
   styleUrls: ['./app.component.css']
 })
 
+// templateURL wordt vervangen door template:, nu wordt dit getoond en niet de inhoud van app.component.html
+// @Component({
+//   selector: 'app-root',
+//   template: `
+//     <!-- inline HTML -->
+//     <div class="container">
+//       <h1>{{ title }}</h1>
+//       <ul class="list-group" *ngIf="showCities">
+//         <li class="list-group-item " *ngFor="let city of cities ">
+//           {{ city.id }} - {{ city.name }} ({{ city.province }})
+//         </li>
+//       </ul>
+//       <h2 *ngIf="cities.length> 3">Jij hebt veel favoriete steden!</h2>
+//     </div>
+//   `,
+//   styleUrls: ['./app.component.css']
+// })
+
 // first use
 // export class AppComponent {
 //   title: string = 'First Angular-app';
@@ -29,6 +47,7 @@ export class AppComponent implements OnInit {
   citiesOfNetherland: string;
   name: string;
   cities: City[];
+  showCities: boolean;
 
   // cities: string[];
 
@@ -46,5 +65,8 @@ export class AppComponent implements OnInit {
     this.name = 'Noella';
     this.citiesOfNetherland = 'Nederland';
     // this.cities = ['Groningen', 'Hengelo', 'Den Haag', 'Enschede'];
+    // boolean evalueren en resultaat laten meetellen
+    // om de lijst in app.component.html wel- of niet te tonen.
+    this.showCities = this.cities.length > 3;
   }
 }
