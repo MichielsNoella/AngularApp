@@ -14,14 +14,16 @@
   <br>
 
   <div>
-    <input type="text" class="form-control-lg" placeholder="add a new city here" #txtCity (keyup.enter)="changeCity(txtCity.value)">
+    <input type="text" class="form-control-lg" placeholder="Fill in a new city here" #txtCity (keyup.enter)="changeCity(txtCity.value)"> <b>(Fill in a new city and press enter)</b>
     <br />
 <!--    <button class="btn btn-success" (click)="addCity()">Add a new city</button>-->
-    <h6> Nieuwe stad {{ newCity }}</h6>
+    <h6> New city : {{ newCity }}</h6>
 
 <!--    <input type="text" class="form-control-lg" placeholder="Nieuwe stad..." #txtCity (keyup.enter)="addCity(txtCity.value)">-->
 <!--    <br />-->
-<!--    <button class="btn btn-success" (click)="addCity(txtCity.value)">Toevoegen</button>-->
+
+
+    <button class="btn btn-success"*ngIf="showCreateButton" (click)="createNewCity(txtCity.value)">Create a new city</button>
 <!--    <h2>{{ newCity }}</h2>-->
   </div>
 

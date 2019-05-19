@@ -8,6 +8,62 @@ import {Contact} from './shared/model/contact.model';
   styleUrls: ['./app.component.css']
 })
 
+// best use
+export class AppComponent implements OnInit {
+  title: string;
+  citiesOfNetherland: string;
+  name: string;
+  cities: City[];
+  contacts: Contact[];
+  contactMsg: string = 'You can contact';
+  showContactAddress: boolean;
+  showCreateButton: boolean;
+  newCity: string;
+
+  // showCities: boolean;
+  // cities: string[];
+
+  constructor() {
+    this.cities = [
+      new City(1, 'Groningen', 'GR'),
+      new City(2, 'Hengelo', 'OV'),
+      new City(3, 'Den Haag', 'ZH'),
+      new City(4, 'Enschede', 'OV')
+    ];
+
+    this.contacts = [
+      new Contact('Noella', 'Michiels', 'Kaalheide', '41A', 3040, 'Huldenberg', 'België')
+    ];
+  }
+
+  ngOnInit() {
+    this.title = 'First Angular-app';
+    this.name = 'Noella';
+    this.citiesOfNetherland = 'Nederland';
+  }
+
+  toggleContactInformation() {
+    this.showContactAddress = !this.showContactAddress;
+  }
+
+  showCity(city: City) {
+    alert('Uw favoriete stad is : ' + city.name);
+  }
+
+
+  changeCity(value: string) {
+    this.newCity = value;
+    this.showCreateButton = true;
+  }
+
+  createNewCity(value: string) {
+    const newCity = new City(this.cities.length + 1, value, '??');
+    this.cities.push(newCity);
+
+  }
+}
+
+
 // templateURL wordt vervangen door template:, nu wordt dit getoond en niet de inhoud van app.component.html
 // @Component({
 //   selector: 'app-root',
@@ -41,56 +97,3 @@ import {Contact} from './shared/model/contact.model';
 //     this.name = 'Noella';
 //   }
 // }
-
-// best use
-export class AppComponent implements OnInit {
-  title: string;
-  citiesOfNetherland: string;
-  name: string;
-  cities: City[];
-  contacts: Contact[];
-  contactMsg: string = 'You can contact';
-  showContactAddress: boolean;
-  newCity: string;
-  // showCities: boolean;
-  // cities: string[];
-
-  constructor() {
-    this.cities = [
-      new City(1, 'Groningen', 'GR'),
-      new City(2, 'Hengelo', 'OV'),
-      new City(3, 'De, Haag', 'ZH'),
-      new City(4, 'Enschede', 'OV')
-    ];
-
-    this.contacts = [
-      new Contact('Noella', 'Michiels', 'Kaalheide', '41A', 3040, 'Huldenberg', 'België')
-    ];
-  }
-
-  ngOnInit() {
-    this.title = 'First Angular-app';
-    this.name = 'Noella';
-    this.citiesOfNetherland = 'Nederland';
-    // this.cities = ['Groningen', 'Hengelo', 'Den Haag', 'Enschede'];
-    // boolean evalueren en resultaat laten meetellen
-    // om de lijst in app.component.html wel- of niet te tonen.
-    // this.showCities = this.cities.length > 3;
-  }
-
-  toggleContactInformation() {
-    this.showContactAddress = !this.showContactAddress;
-    // this.showContactAddress ? 'You can contact' :;
-
-  }
-
-  showCity(city: City) {
-    alert('Uw favoriete stad is : ' + city.name);
-  }
-
-
-  changeCity(value: string) {
-    alert(value);
-    this.newCity = value;
-  }
-}
