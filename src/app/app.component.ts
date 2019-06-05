@@ -14,11 +14,14 @@ export class AppComponent implements OnInit {
   citiesOfNetherland: string;
   name: string;
   cities: City[];
+  currentCity: City;
+  cityPhoto: string = '';
   contacts: Contact[];
   contactMsg: string = 'You can contact';
   showContactAddress: boolean;
   showCreateButton: boolean;
   newCity: string;
+  textVisible: boolean = true;
 
   // showCities: boolean;
   // cities: string[];
@@ -47,7 +50,8 @@ export class AppComponent implements OnInit {
   }
 
   showCity(city: City) {
-    alert('Uw favoriete stad is : ' + city.name);
+    this.currentCity = city;
+    this.cityPhoto = `assets/img/${this.currentCity.name}.jpg`;
   }
 
 
@@ -59,8 +63,21 @@ export class AppComponent implements OnInit {
   createNewCity(value: string) {
     const newCity = new City(this.cities.length + 1, value, '??');
     this.cities.push(newCity);
+    this.textVisible = !this.textVisible;
 
   }
+
+  // Stad toevoegen via [(ngModel)].
+  // Let op, geen parameter meer nodig!
+  addCity() {
+    const addedCity = new City(this.cities.length + 1, this.newCity, 'Onbekend');
+    this.cities.push(addedCity);
+    // this.textVisible = !this.textVisible;
+  }
+
+  // toggleText() {
+  //   this.textVisible = !this.textVisible;
+  // }
 }
 
 

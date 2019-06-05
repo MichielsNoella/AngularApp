@@ -13,19 +13,22 @@
   </ul>
   <br>
 
-  <div>
-    <input type="text" class="form-control-lg" placeholder="Fill in a new city here" #txtCity (keyup.enter)="changeCity(txtCity.value)"> <b>(Fill in a new city and press enter)</b>
-    <br />
-<!--    <button class="btn btn-success" (click)="addCity()">Add a new city</button>-->
-    <h6> New city : {{ newCity }}</h6>
-
-<!--    <input type="text" class="form-control-lg" placeholder="Nieuwe stad..." #txtCity (keyup.enter)="addCity(txtCity.value)">-->
-<!--    <br />-->
-
-
-    <button class="btn btn-success"*ngIf="showCreateButton" (click)="createNewCity(txtCity.value)">Create a new city</button>
-<!--    <h2>{{ newCity }}</h2>-->
+  <!-- Als er een stad is aangeklikt, wordt deze waarde opgeslagen
+  in currentCity. Hiervan is een foto met de betreffende naam aanwezig
+  in de map /assets/img/. Er is ook CSS-stijl toegevoegd aan app.component.css -->
+  <div *ngIf="currentCity">
+    <img class="cityPhoto" [src]="cityPhoto" [alt]="currentCity.name" class="cityPhoto">
+    <h2> Gekozen stad: {{ currentCity.name}} </h2>
   </div>
+
+  <div>
+    <input type="text" class="form-control-lg" placeholder="new city" #txtCity (keyup.enter)="changeCity(txtCity.value)"> <b>(Fill in a new city and press enter)</b>
+    <br />
+    <h6> New city : {{ newCity }}</h6>
+    <button class="btn btn-success"*ngIf="showCreateButton" (click)="createNewCity(txtCity.value)">Create a new city</button>
+  </div>
+
+
 
   <br>
 
@@ -40,6 +43,23 @@
     </li>
   </ul>
   <br>
+
+
+
+
+
+  <!-- tweeRichtingBinding
+      Liever twee kaar eenrichtingdatabinding dan één keer tweerichtingdatabinding
+    Door ngModel geen parameters meer nodig : variabele leeft al in de controller
+    <input type="text" [(ngModel)]="newCity" class="form-control-lg">
+    <br>
+    <button class="btn btn-success"  (click)="addCity()">Add a new city</button>
+  -->
+
+<!-- show or hide a text -->
+<!--  <button class="btn btn-success" (click)="toggleText()">Toggle text</button>-->
+<!--  <h2 [hidden]="textVisible" > hidden or not</h2>-->
+
 
 <!--  <app-customer></app-customer>-->
 </div>
